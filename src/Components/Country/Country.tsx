@@ -3,15 +3,15 @@ import type CountryType from "../../Type";
 import "./Country.css";
 
 export interface CountryProps {
-  country: Promise<CountryType[]>;
+  country:CountryType;
   handleVisitedFlag:(flag:string)=>void
 }
 
 export default function Country({ country ,handleVisitedFlag}: CountryProps) {
   const [visited, setVisited] = useState<Boolean>(false);
-  const handleVisited = () => {
+  const handleVisited = (country) => {
     setVisited(!visited);
-    handleVisitedFlag(country)
+    handleVisitedFlag(country);
   };
   return (
     <div className={`${visited?"visited-country":"country"}`}>
